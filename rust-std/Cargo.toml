@@ -1,0 +1,32 @@
+[package]
+name = "rust-tests-std"
+version = "0.1.0"
+authors = ["ignas"]
+edition = "2021"
+resolver = "2"
+
+[profile.release]
+opt-level = "z"
+
+[profile.dev]
+#debug = true # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+pio = ["esp-idf-sys/pio"]
+
+[dependencies]
+esp-idf-sys = { version = "0.31.9", features = ["binstart"] }
+
+[build-dependencies]
+embuild = "0.30"
+anyhow = "1"
+
+
+# The valid options are:
+# 0: no optimizations
+# 1: basic optimizations
+# 2: some optimizations
+# 3: all optimizations
+# "s": optimize for binary size
+# "z": optimize for binary size, but also turn off loop vectorization.
