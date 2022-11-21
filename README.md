@@ -15,7 +15,7 @@ Five functions were executed in each language. The functions (algortihms) are ta
 - [IIR(floating point)](https://github.com/espressif/esp-dsp/blob/master/modules/iir/biquad/dsps_biquad_f32_ansi.c)
 - [FIR(floating point)](https://github.com/espressif/esp-dsp/blob/master/modules/fir/float/dsps_fir_f32_ansi.c)
 
-'MATLAB models' folder contains MATLAB models for each tested function. These models are used to generate reference output data.
+`MATLAB models` folder contains MATLAB models for each tested function. These models are used to generate reference output data.
 
 All projects were run on an [M5stack Core Basic](https://docs.m5stack.com/en/core/basic), but any ESP32 based board should work.
 
