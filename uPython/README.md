@@ -9,6 +9,6 @@ Generrely, the code can be run on any, Python3 interpretes. However, since some 
 - `a_ESP32_scripts` folder contains ESP32 specific code.
 - `a_pc_scripts` folder contains generic Python3 code.
 
-the code version is determined by the 'running_on_PC` variable in `boot.py` file. If the code is intended to be run on ESP32, it should be set to `False`.
+the code version is determined by the `running_on_PC` variable in `boot.py` file. If the code is intended to be run on ESP32, it should be set to `False`.
 
 To run the code on ESP32, all files in this folder, except for `a_pc_scripts` should be uploaded to ESP32. The code then should be run on boot.
