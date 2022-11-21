@@ -6,4 +6,4 @@ After opening the project with Platform IO, it should install any necessary exte
 The `upload_port` parameter in `platformio.ini` file should be changed to correct COM(or /dev/ttyUSB) port of ESP32 on your PC.
 
 # Building and flashing
-Use Platform IO 'BUild' button to build or 'Upload' to build and flash the code.
+Use Platform IO `Build` button to build or `Upload` to build and flash the code.
