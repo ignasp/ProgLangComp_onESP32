@@ -8,7 +8,7 @@ The languages compared are:
 - [TinyGO](https://tinygo.org/docs/reference/microcontrollers/m5stack/)
 - [MicroPython](https://docs.micropython.org/en/latest/esp32/tutorial/intro.html)
 
-Five functions were executed in each language. The functions (algortihms) are taken from open sources and slightly modified, and ported to other languages, trying to keep the code a similar as possible between languages (links to original sources):
+Five functions were executed in each language. The functions are taken from open sources and slightly modified, and ported to other languages, trying to keep the code a similar as possible between languages (links to original sources):
 - [CRC32](https://cs.opensource.google/go/go/+/refs/tags/go1.19.3:src/hash/crc32/crc32_generic.go)
 - [SHA256](https://github.com/B-Con/crypto-algorithms/blob/master/sha256_test.c)
 - [FFT(fixed point, complex pair of int16)](https://github.com/espressif/esp-dsp/blob/master/modules/fft/fixed/dsps_fft2r_sc16_ansi.c)
