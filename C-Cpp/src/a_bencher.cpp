@@ -50,7 +50,6 @@ void bench_Run(Tester * self){
         int32_t dataLen = self->TestLengths[i++];
         int iters = 0;
         RezVerifcation rez = RezVerifcation::NotRun;
-        unsigned intlevel = portENTER_CRITICAL_NESTED();
         rez = self->RunFn(dataLen, &timer);
         for (; iters < self->Niterations; iters++){
             rez = self->RunFn(dataLen, &timer);
