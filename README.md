@@ -23,7 +23,7 @@ All projects were run on an [M5stack Core Basic](https://docs.m5stack.com/en/cor
 The project for each language is in a separate directory. The structure of these projects is kept as similar as possible. 
 - `a_bencher` file contains a simple test bench structure, timer structure and test runner function. For this testbench a wrapper funcion must be defined - it runs the tested function and also includes the necessary initialization and cleanup. 
 - `a_tests` file contains currently used wrapper functions. 
-- `t_[funcion_name]` files conatin the source code for actual tested functions.
+- `t_[funcion_name]` files contain the source code for actual tested functions.
 - `a_data` contains test input data (an array of random uint8 type values) and expected values for each function.
 - `main` file is where the tesbench structures are initialized and executed. 
 
