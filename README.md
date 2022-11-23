@@ -27,6 +27,8 @@ The project for each language is in a separate directory. The structure of these
 - `a_data` contains test input data (an array of random uint8 type values) and expected values for each function.
 - `main` file is where the tesbench structures are initialized and executed. 
 
+The file `tests_default(Os_Oz)_v2.csv` contains combine output of every project.
+
 ## Usage
 After flashing the code, it is run immediately after boot. The test results are printed to the serial console. For viewing the output, a terminal emulator like [MobaXterm](https://mobaxterm.mobatek.net/) can be used, with baudrate setting 115200. The output is in CSV. A more readable format can be set by changing the variable `globalPrintType` to `PrintType::Readable` in `main` file.
 
