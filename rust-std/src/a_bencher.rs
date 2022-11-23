@@ -1,39 +1,47 @@
 pub mod my_bench{
     use crate::a_data::data;
-    use std::fmt;
+    use std::{fmt, ffi::c_uint};
+    use esp_idf_sys;
 
     pub struct timer{
-        tStart          : std::time::Instant,
+        tStart          : i64,
+        cStart          : c_uint,
         started         : bool,
-        pub tDuration   : std::time::Duration,
+        pub tDuration   : i64,
         pub cDuration   : u32,
     }
-    
+
     impl timer{
         pub fn init() -> timer{
             timer {
-                tStart      : std::time::Instant::now(),
+                tStart      : 0,
+                cStart      : 0,
                 started     : false,
-                tDuration   : std::time::Duration::ZERO,
+                tDuration   : 0,
                 cDuration   : 0,
             }
         }
         
         pub fn start(&mut self){
             self.started = true;
-            self.tStart = std::time::Instant::now();
+            unsafe{
+                self.tStart = esp_idf_sys::esp_timer_get_time();
+                self.cStart = esp_idf_sys::xthal_get_ccount();
+            }
         }
         
         pub fn stop(&mut self){
-            self.tDuration = self.tStart.elapsed();
+            unsafe{
+                self.tDuration = esp_idf_sys::esp_timer_get_time() - self.tStart;
+                self.cDuration = esp_idf_sys::xthal_get_ccount() - self.cStart;
+            }
             if !self.started{
                 println!("Timer was not started duration is invalid");
             }
             self.started = false;
-            self.cDuration = ((self.tDuration.as_nanos() as f32)/1000.0 * 160.0) as u32;
         }
     }
-    
+
     //-------------------------------------------------------------------------
     
     pub enum rezVerifcation {
@@ -96,10 +104,10 @@ pub mod my_bench{
                     let rez = (self.runFn)(data_len, &mut timer);
                     match self.printType {
                         printType::Readable => {
-                            println!("|{:<10}|{:<10}|{:<10}|{:<10}|{:<10}|{:<10}|{:<10}|{}", data::LANG_NAME, self.testName, CPU_freq, iters+1, data_len, timer.cDuration, timer.tDuration.as_micros(), rez);
+                            println!("|{:<10}|{:<10}|{:<10}|{:<10}|{:<10}|{:<10}|{:<10}|{}", data::LANG_NAME, self.testName, CPU_freq, iters+1, data_len, timer.cDuration, timer.tDuration, rez);
                         }
                         printType::CSV =>{
-                            println!("{:<10};{:<10};{:<10};{:<10};{:<10};{:<10};{:<10};{}", data::LANG_NAME, self.testName, CPU_freq, iters+1, data_len, timer.cDuration, timer.tDuration.as_micros(), rez);
+                            println!("{:<10};{:<10};{:<10};{:<10};{:<10};{:<10};{:<10};{}", data::LANG_NAME, self.testName, CPU_freq, iters+1, data_len, timer.cDuration, timer.tDuration, rez);
                         }
                         printType::Matlab => todo!(),
                     }
