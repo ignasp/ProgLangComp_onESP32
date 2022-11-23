@@ -2,6 +2,10 @@ import sys
 import gc
 sys.path.append("./a_data")
 
+def t_OVERHEAD_run(data_len, timer):
+    timer.start()
+    timer.stop()
+
 def t_CRC32_run(data_len, timer):
     from a_in_data import data
    
